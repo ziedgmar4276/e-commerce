@@ -25,7 +25,7 @@ class Produit
     /**
      * @ORM\Column(type="string", length=50)
      */
-    private $prenom_produit;
+    private $compagnie;
 
     /**
      * @ORM\Column(type="integer")
@@ -35,7 +35,7 @@ class Produit
     /**
      * @ORM\Column(type="string", length=100)
      */
-    private $image_produit;
+    private $discription;
 
     /**
      * @ORM\ManyToOne(targetEntity=Categorie::class, inversedBy="produits")
@@ -60,14 +60,14 @@ class Produit
         return $this;
     }
 
-    public function getPrenomProduit(): ?string
+    public function getcompagnie(): ?string
     {
-        return $this->prenom_produit;
+        return $this->compagnie;
     }
 
-    public function setPrenomProduit(string $prenom_produit): self
+    public function setcompagnie(string $compagnie): self
     {
-        $this->prenom_produit = $prenom_produit;
+        $this->compagnie = $compagnie;
 
         return $this;
     }
@@ -84,14 +84,14 @@ class Produit
         return $this;
     }
 
-    public function getImageProduit(): ?string
+    public function getdiscription(): ?string
     {
-        return $this->image_produit;
+        return $this->discription;
     }
 
-    public function setImageProduit(string $image_produit): self
+    public function setdiscription(string $discription): self
     {
-        $this->image_produit = $image_produit;
+        $this->discription = $discription;
 
         return $this;
     }
