@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie {% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+  <h1 class="display-3">Categorie </h1>
+  <p class="lead">MIKA  informatique est la première boutique à vendre du matériel informatique en Tunisie. Depuis 2020, notre site marchand propose à ses clients toutes sortes d'articles pour usage informatique : Pc portables, Pc de bureau, tablettes, Smartphones ainsi que toutes sortes d'accessoires comme les claviers, les souris, les casques, les câbles...</p>
+  <hr class="my-4">
+  <form action="/searchCat" method="post" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  <p>Tu dois ajoute nouvelle catégorie  </p>
+ <p class="lead">
+    <a class="btn btn-primary btn-lg"href="{{ path('categorie_new') }}" role="button">Create new Categorie</a>
+  </p>
+</div>
+   
+
+    <table class="table">
+        <thead>
+            <tr class="table-secondary">
+                <th>Id</th>
+                <th>Nom_categorie</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.nomCategorie }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}"class="btn btn-primary active" role="button" aria-pressed="true">show</a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-secondary active" role="button" aria-pressed="true">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+  
+{% endblock %}

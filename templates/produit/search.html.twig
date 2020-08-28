@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit {% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+  <h1 class="display-3">Produit </h1>
+  <p class="lead">MIKA  informatique est la première boutique à vendre du matériel informatique en Tunisie. Depuis 2020, notre site marchand propose à ses clients toutes sortes d'articles pour usage informatique : Pc portables, Pc de bureau, tablettes, Smartphones ainsi que toutes sortes d'accessoires comme les claviers, les souris, les casques, les câbles...</p>
+  <hr class="my-4">
+  {# <p>Tu dois ajoute nouvelle produit</p> #}
+  <form action="/search" method="post" class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="search">
+      <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  {# <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{ path('produit_new') }}" role="button">Create new Produit</a>
+  </p> #}
+  Search result : {{produits[0].nomProduit}}
+</div>
+    
+
+    <table class="table">
+    
+        <thead>
+            <tr class="table-secondary">
+              <th>Id</th>
+                <th>Nom_produit   </th>
+                <th>compagnie</th>
+                <th>Prix_produit  </th>
+                <th>Discription </th>
+                <th>actions       </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for produit in produits %}
+            <tr>
+                <td>{{ produit.id }}</td>
+                <td>{{ produit.nomProduit }}</td>
+                <td>{{ produit.compagnie }}</td>
+                <td>{{ produit.prixProduit }}</td>
+                <td>{{ produit.discription}}</td>
+                <td>
+                <a href="{{ path('produit_show', {'id': produit.id}) }}" class="btn btn-primary active" role="button" aria-pressed="true">show</a>
+                <a href="{{ path('produit_edit', {'id': produit.id}) }}" class="btn btn-secondary active" role="button" aria-pressed="true">edit</a>
+              
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+ 
+{% endblock %}
